@@ -10,12 +10,14 @@
 *{
     margin: 0;
     padding: 0;
-    scroll-behavior: smooth;
+  
 
 }
 
 html{
     font-size:62.5% ;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body{
@@ -62,6 +64,7 @@ a{
 }
 
 .responsive-table{
+    overflow: hidden;
     overflow-x: auto;
 }
 
@@ -107,11 +110,16 @@ tfoot td, table th{
 }
 
 .section{
-    min-width: 200vh;
+    min-width: 100vh;
 }
 
 .menu-spacing{
     height: 6.5rem;
+}
+
+body .full-width{
+    width: 100%;
+    flex: 1 1 100%;
 }
 
 .menu{
@@ -130,12 +138,13 @@ tfoot td, table th{
     align-items: center;
     padding-top: 0;
     padding-bottom: 0;
-
 }
+
 .menu h1{
     font-size: 2.3rem;
     color: var(--primary-color);
 }
+
 .menu h1 a{
     color: inherit;
 }
@@ -196,7 +205,7 @@ tfoot td, table th{
     min-height: 100vh;
     /*flex-flow: column nowrap;*/
     flex-direction: column;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     text-align: center;
 }
@@ -207,8 +216,8 @@ tfoot td, table th{
 
 .grid-content{
     display:flex;
-    height: 150vh;
-    flex-flow: column nowrap;
+    min-height: 150vh;
+    flex-flow: column wrap;
     justify-content: center;
 }
 
@@ -250,7 +259,6 @@ tfoot td, table th{
     max-width: 36rem;
     max-height: 36rem;
     overflow: hidden;
-    
 }
 
 .gallery-img img {
@@ -263,4 +271,165 @@ tfoot td, table th{
 
 .grid-form{
     grid-column: span 2;
+}
+
+.grid-form .form-contact{
+  border: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--grap);
+}
+
+.group-form{
+    flex: 1 1 32rem;
+    margin: 1rem;
+}
+
+.group-form label{
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.group-form input, .group-form textarea{
+    border: none;
+    background: var(--white);
+    font-size: 3rem;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    outline: none;
+}
+
+
+.grid-form:nth-child(2){
+    grid-column: span 3;
+}
+.group-form input::placeholder , .group-form textarea::placeholder{
+    color: var(--light-gray);
+}
+
+.group-form button{
+    border: 0.5rem solid var(--white);
+    background: none;
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+   
+}
+
+.group-form button:hover{
+    background: var(--white);
+    color: var(--primary-color);   
+}
+
+.form-contact legend{
+    font-style: italic;
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+}
+
+.footer{
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+}
+
+.footer a{
+    color: inherit;
+}
+
+.heart{
+    color: var(--secundary-color);
+}
+
+.footer p{
+    margin: 0;
+    padding: 3rem;
+}
+
+.close-menu{
+    display: none;
+}
+
+.back-to-top{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--white);
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: var(--primary-color);
+    transform: rotate(-90deg);
+    border: 0.1rem solid var(--primary-color);
+}
+
+@media(max-width:800px){
+    .intro-content, .grid{
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img{
+        width: 100%;
+        
+    }
+    
+    .gallery-img img{
+        width: 100%; 
+    }
+
+    .menu{
+        bottom: 0;
+        text-align: center;
+    }
+
+    .menu-content , .menu-content ul{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .menu-content{
+        height: 100vh;
+    }
+
+    .menu{
+        display: none;
+    }
+
+    .close-menu-label::after{
+        content: '☰';
+        position: fixed;
+        z-index: 2;
+        top: 1rem;
+        right: 1rem;
+        background: var(--primary-color);
+        color: var(--white);
+        font-size: 1rem;
+        line-height: 3rem;
+        width: 2rem;
+        height: 3rem;
+        text-align: center;
+        padding: 0.5rem;
+        cursor: pointer;
+    
+    }
+
+    /*×*/
+    .close-menu:checked~.menu{
+        display: block;
+    }
+
+    .close-menu:checked~.close-menu-label::after{
+        content: '×';
+    }
+
+    .menu-spacing{
+      display: none;
+    }
+
 }
